@@ -1,0 +1,20 @@
+({
+     check : function(component, event, helper){
+     var date = component.get("v.date");
+     if(date != null) {
+     component.set("v.isButtonActive",false);
+     }
+     else {
+     component.set("v.isButtonActive",true);
+     }
+    
+     },
+    
+    toTimestamp : function(component, event, helper){
+    var d = new Date(component.get("v.date"));
+    component.set("v.outputUnix", d.getTime()/1000); 
+
+    
+    }
+  
+})
