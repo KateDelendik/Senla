@@ -1,0 +1,32 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    
+    <aura:attribute name="date" type="DateTime" access="Public"/>
+    <aura:attribute name="outputUnix" type="long" access="Public"/>
+    <aura:attribute name="isButtonActive" type="boolean" default="true" />
+ 
+
+    <lightning:layout class="slds-page-header slds-page-header--object-home">
+      <lightning:layoutItem>
+        <lightning:icon iconName="standard:scan_card"/>
+      </lightning:layoutItem>
+      <lightning:layoutItem padding="horizontal-small">
+        <div class="page-section page-header">
+          <h2 class="slds-text-heading--medium">{!$Label.c.UnixTimestampCompLabel}</h2>
+        </div>
+      </lightning:layoutItem>
+    </lightning:layout>	
+    <div class="slds-size_8-of-8">
+      <article class="slds-card">
+        <div class="slds-card__body slds-card__body_inner">
+          <lightning:input type="DateTime" name="inputDateTime" label="{!$Label.c.DateTimeInputCompLabel}" value="{!v.date}" onchange="{!c.check}"/>
+        </div>	
+        <div class="slds-p-left_medium">
+          <lightning:helptext content="{!$Label.c.HelpTextForButtonCompLabel}" />
+          <button class="slds-button slds-button_outline-brand" disabled="{!v.isButtonActive}" onclick="{!c.toTimestamp}">{!$Label.c.ConverteCompButtomLabel}</button>
+        </div>
+        <lightning:card class="slds-card__header slds-grid" title="{!$Label.c.RezultCompLabel}" >
+		  <lightning:formattedNumber  title="result" label ="Unix" value="{!v.outputUnix}"/>
+	    </lightning:card>
+      </article>
+    </div>
+</aura:component>
